@@ -1,0 +1,32 @@
+body {
+    color: $black;
+}
+
+h1, h2, h3 {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 2.05em;
+}
+
+h3 {
+    font-size: 1.6em;
+}
+
+blockquote, p {
+    line-height: 140%;
+    margin-bottom: 1.2em;
+    @include breakpoint($desktop) {
+        width: 80%;
+    }
+}
+
+img {
+    max-width: 100%;
+}

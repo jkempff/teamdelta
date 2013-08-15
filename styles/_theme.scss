@@ -1,0 +1,70 @@
+#header {
+    @include clearfix();
+
+    background: $black;
+    color: $white;
+}
+
+#nav {
+    background: $black;
+    // box-shadow: 0 0 9px $grayDark;
+}
+
+#menu-toggle {
+    display: block;
+    position: absolute;
+    top: 9px;
+    left: 50%;
+    margin-left: -23px;
+    border-radius: 5px;
+    
+    color: white;
+    font-size: 2em;
+    line-height: 1.3em;
+
+    background: $black;
+
+    &:hover {
+        background: $white;
+        color: $black;
+        border-color: $black;
+    }
+
+    .show-menu & {
+        display: none;
+    }
+
+    @include breakpoint($tablet) {
+        display: none;
+    }
+}
+
+#content {
+    position: relative;
+
+    min-height: 100%;
+
+    background-color: $white;
+    
+    transition: 0.2s transform 0s;
+    transform-origin: 0 50%;
+
+    .loading & {
+        transform: skewY(4deg);
+    }
+}
+
+h1.title {
+    padding: 0 20px;
+    @include breakpoint($tablet) {
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+
+        color: $white;
+    }
+}
+
+.text-inner {
+    padding: 12px 20px;
+}

@@ -1,0 +1,61 @@
+/* breakpoints */
+$tablet: 680px;
+$desktop: 1024px;
+
+$grids: 12;
+$grids: add-grid(3 at $tablet);
+// $grids: add-grid(2 at $desktop);
+$gutters: 0;
+
+body, html {
+    height: 100%;
+    background: $black;
+}
+
+body {
+    overflow-y: scroll;
+}
+
+#nav {
+    position: fixed;
+    @include layoutWidthTransition();
+
+    @include grid-span(2, 1);
+    
+    ul {
+        left: -900%;
+    }
+
+    @include breakpoint($tablet) {
+        @include grid-span(1, 1);
+
+        ul {
+            left: 0;
+        }
+    }
+
+    // @include breakpoint($desktop) {
+    //     @include grid-span(1, 1);
+    // }
+
+    .show-menu & {
+        ul {
+            left: 0;
+        }
+        width: 90%;
+    }
+}
+
+#content {
+    @include layoutWidthTransition();
+
+    @include grid-span(10,3);
+
+    @include breakpoint($tablet) {
+        @include grid-span(2,2);
+    }
+
+    // @include breakpoint($desktop) {
+    //     @include grid-span(1,2);
+    // }
+}
