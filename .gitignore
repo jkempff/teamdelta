@@ -6,3 +6,5 @@ components/
 material/
 .sass-cache
 .tmp
+build/
+.grunt/

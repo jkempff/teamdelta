@@ -1,4 +1,5 @@
 (function ($, window, undefined) {
+    "use strict";
     $(function () {
         var $body = $('body');
 
@@ -7,18 +8,13 @@
         });
 
         $(window).resize(function () {
-            if($(this).width() > 680) {
+            if ($(this).width() > 680) {
                 $body.removeClass('show-menu');
             }
         });
 
-        // $('#nav li a').click(function(e){
-        //     e.preventDefault();
-        //     $body.addClass('loading');
-        //     setTimeout(function () {
-        //         $body.removeClass('loading');
-        //     }, 500);
-        //     return;
-        // })
+        $('#nav li a').click(function(e){
+            $body.removeClass('show-menu');
+        })
     });
 })(jQuery, window);

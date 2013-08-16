@@ -19,16 +19,19 @@
         
         height: 16.66667%;
         
-        border-right: 0px solid $white;
-        transition: 0.2s border-right-width 0s;
+        // border-left: 0px solid $gray;
+        // transition: 0.2s border-right-width 0s;
 
         &.active {
-            border-right-width: 50px;
+            a {
+                background-color: $gray;
+                color: $black;
+            }
         }
         span {
             margin: auto;
             position: absolute;
-            top: 42%;
+            top: 39%;
             left: 0;
             bottom: 0;
             right: 0;

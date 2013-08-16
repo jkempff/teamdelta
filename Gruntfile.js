@@ -100,7 +100,7 @@ module.exports = function (grunt) {
                 generatedImagesDir: '.tmp/img/generated',
                 imagesDir: 'img',
                 javascriptsDir: 'js',
-                fontsDir: 'styles/fonts',
+                fontsDir: 'font',
                 importPath: 'components',
                 httpImagesPath: '/img',
                 httpGeneratedImagesPath: '/img/generated',
@@ -147,7 +147,7 @@ module.exports = function (grunt) {
                         'build/js/{,*/}*.js',
                         'build/styles/{,*/}*.css',
                         'build/img/{,*/}*.{png,jpg,jpeg,gif,webp}',
-                        'build/styles/fonts/*'
+                        'build/font/*'
                     ]
                 }
             }
@@ -234,7 +234,7 @@ module.exports = function (grunt) {
                             '*.{ico,txt}',
                             '.htaccess',
                             'img/{,*/}*.{webp,gif}',
-                            'styles/fonts/*'
+                            'font/*'
                         ]
                     },
                     {
@@ -260,6 +260,12 @@ module.exports = function (grunt) {
                 'svgmin',
                 'htmlmin'
             ]
+        },
+        "gh-pages": {
+            options: {
+                base: 'build'
+            },
+            src: ['**']
         }
     });
 
@@ -278,6 +284,10 @@ module.exports = function (grunt) {
         ]);
     });
 
+    grunt.registerTask('gh', [
+        'gh-pages'
+    ]);
+
     grunt.registerTask('build', [
         'clean:dist',
         'useminPrepare',
@@ -292,7 +302,7 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('default', [
-        'jshint',
+        // 'jshint',
         'build'
     ]);
 };

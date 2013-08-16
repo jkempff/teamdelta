@@ -20,8 +20,12 @@ h3 {
 }
 
 blockquote, p {
-    line-height: 140%;
+    line-height: 155%;
+    font-size: 1.1em;
     margin-bottom: 1.2em;
+
+    font-family: 'Open Sans Condensed', sans-serif;
+
     @include breakpoint($desktop) {
         width: 80%;
     }

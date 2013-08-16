@@ -1,26 +1,31 @@
 /* breakpoints */
 $tablet: 680px;
 $desktop: 1024px;
+$bigass: 1280px;
 
 $grids: 12;
 $grids: add-grid(3 at $tablet);
-// $grids: add-grid(2 at $desktop);
+$grids: add-grid(5 at $desktop);
 $gutters: 0;
 
 body, html {
     height: 100%;
     background: $black;
+
+    overflow: hidden;
 }
 
-body {
-    overflow-y: scroll;
-}
 
 #nav {
     position: fixed;
+    
+    top: 0;
+    left: 0;
+
     @include layoutWidthTransition();
 
     @include grid-span(2, 1);
+
     
     ul {
         left: -900%;
@@ -34,19 +39,24 @@ body {
         }
     }
 
-    // @include breakpoint($desktop) {
-    //     @include grid-span(1, 1);
-    // }
+    @include breakpoint($desktop) {
+        @include grid-span(1, 1);
+    }
 
     .show-menu & {
         ul {
             left: 0;
         }
-        width: 90%;
+        width: 100%;
     }
 }
 
 #content {
+    height: 100%;
+
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+
     @include layoutWidthTransition();
 
     @include grid-span(10,3);
@@ -55,7 +65,7 @@ body {
         @include grid-span(2,2);
     }
 
-    // @include breakpoint($desktop) {
-    //     @include grid-span(1,2);
-    // }
+    @include breakpoint($desktop) {
+        @include grid-span(4,2);
+    }
 }
