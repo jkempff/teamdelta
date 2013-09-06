@@ -1,6 +1,6 @@
 /* breakpoints */
 $tablet: 680px;
-$desktop: 1024px;
+$desktop: 1124px;
 $bigass: 1280px;
 
 $grids: 12;
@@ -10,11 +10,17 @@ $gutters: 0;
 
 body, html {
     height: 100%;
-    background: $black;
+    background: $black url(../img/black-Linen.png);
 
-    overflow: hidden;
+    // overflow: hidden;
 }
 
+body {
+
+
+    // overflow-y: scroll;
+    // -webkit-overflow-scrolling: touch;
+}
 
 #nav {
     position: fixed;
@@ -25,7 +31,10 @@ body, html {
     @include layoutWidthTransition();
 
     @include grid-span(2, 1);
-
+    
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
     
     ul {
         left: -900%;
@@ -52,11 +61,6 @@ body, html {
 }
 
 #content {
-    height: 100%;
-
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-
     @include layoutWidthTransition();
 
     @include grid-span(10,3);

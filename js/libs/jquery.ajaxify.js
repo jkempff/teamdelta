@@ -48,7 +48,7 @@
                 $this = $(obj),
                 url = $this.attr('href')||'',
                 isInternalLink;
-            
+
             // Check link
             isInternalLink = url.substring(0,rootUrl.length) === rootUrl || url.indexOf(':') === -1;
             // Ignore or Keep
@@ -72,7 +72,6 @@
         $.fn.ajaxify = function(){
             // Prepare
             var $this = $(this);
-            console.log($this);
             // Ajaxify
             $this.find('a:internal:not(.no-ajaxy)').click(function(event){
 
@@ -108,6 +107,16 @@
 
             // Set Loading
             $body.addClass('loading');
+
+
+            // workaround for safari: iframe stays visible, even if removed from DOM
+            $('iframe', $content).attr('src', '').css({
+                visibility: 'hidden',
+                opacity: 0,
+                display: 'none',
+                height: 0,
+                width: 0
+            }).remove();
 
             // Start Fade Out
             // Animating to opacity to 0 still keeps the element's height intact
@@ -151,6 +160,7 @@
 
                         // Update the content
                         $content.stop(true,true);
+                    
                         $content.html(contentHtml).ajaxify().show(); /* you could fade in here if you'd like */
 
                         // Update the title
@@ -173,6 +183,7 @@
 
                         // Complete the change
                         if ( $body.ScrollTo||false ) { $body.ScrollTo(scrollOptions); } /* http://balupton.com/projects/jquery-scrollto */
+                        document.body.scrollTop = 0;
                         $body.removeClass('loading');
                         $window.trigger(completedEventName);
         
@@ -186,6 +197,8 @@
                             reinvigorate.ajax_track(url);
                             // ^ we use the full url here as that is what reinvigorate supports
                         }
+
+                        $window.trigger('ajaxLoad');
                     },
                     error: function(jqXHR, textStatus, errorThrown){
                         document.location.href = url;
